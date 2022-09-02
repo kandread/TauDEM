@@ -227,12 +227,12 @@ offsets[0] = 0;
 oldtypes[o] = MPI_LONG;
 blockcounts[0]= 2;
 
-MPI_Type_get_extent(MPI_LONG, &extent);
+MPI_Type_extent(MPI_LONG, &extent);
 offsets[1] = 2 * extent;
 oldtypes[1] = MPI_FLOAT;
 blockcounts[1] = 1;
 
-MPI_Type_create_struct(2,blockcounts,offsets,oldtypes,&PointType);
+MPI_Type_struct(2,blockcounts,offsets,oldtypes,&PointType);
 MPI_Type_comit(&PointType);
 
 MPI_Send(coord,numCoords,PointType,dest,tag,MCW);
